@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Group 6 - Team</title>
+
+    <style>
+
+        /* =========================================
+           GENERAL
+        ========================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #111111;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+
+        /* =========================================
+           MAIN CONTAINER
+        ========================================= */
+
+        .team-container {
+            width: 100%;
+            max-width: 1100px;
+            margin: auto;
+
+            background-color: #ffffff;
+
+            padding: 40px 60px;
+
+            position: relative;
+            overflow: hidden;
+        }
+
+
+        /* =========================================
+           DECORATIVE PINK STRIPES
+        ========================================= */
+
+        .team-container::before,
+        .team-container::after {
+            content: "";
+
+            position: absolute;
+
+            top: 48%;
+
+            width: 60px;
+            height: 120px;
+
+            transform: translateY(-50%);
+
+            background: repeating-linear-gradient(
+                -45deg,
+                #ff0055 0px,
+                #ff0055 4px,
+                transparent 4px,
+                transparent 10px
+            );
+
+            z-index: 0;
+        }
+
+        .team-container::before {
+            left: 0;
+        }
+
+        .team-container::after {
+            right: 0;
+        }
+
+
+        /* =========================================
+           HEADER
+        ========================================= */
+
+        .header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 60px;
+
+            position: relative;
+            z-index: 1;
+        }
+
+        .title-container {
+            display: flex;
+            align-items: center;
+            flex: 1;
+        }
+
+        .title {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+
+        .title .outline {
+            color: transparent;
+            -webkit-text-stroke: 2px #ff0055;
+        }
+
+        .title .filled {
+            color: #ff0055;
+            margin-left: 8px;
+        }
+
+        .header-line {
+            height: 3px;
+            background-color: #ff0055;
+            flex: 1;
+            margin-left: 25px;
+        }
+
+
+        /* =========================================
+           LOGO
+        ========================================= */
+
+        
+
+
+        /* =========================================
+           TEAM GRID
+        ========================================= */
+
+        .team-grid {
+            display: grid;
+
+            grid-template-columns: repeat(3, 1fr);
+
+            gap: 45px 36px;
+
+            position: relative;
+            z-index: 1;
+        }
+
+
+        /* =========================================
+           TEAM CARD
+        ========================================= */
+
+        .team-card {
+            min-width: 0;
+        }
+
+
+        /* =========================================
+           IMAGE
+        ========================================= */
+
+        .image-wrapper {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+
+            overflow: hidden;
+
+            background-color: #f1f1f1;
+
+            margin-bottom: 20px;
+
+            position: relative;
+        }
+
+        .image-wrapper img {
+            width: 100%;
+            height: 100%;
+
+            display: block;
+
+            object-fit: cover;
+
+            transition: transform 0.3s ease;
+        }
+
+        .image-wrapper:hover img {
+            transform: scale(1.04);
+        }
+
+
+        /* =========================================
+           MEMBER NAME
+        ========================================= */
+
+        .member-name {
+            color: #ff0055;
+
+            font-size: 1.1rem;
+
+            font-weight: 900;
+
+            text-transform: uppercase;
+
+            letter-spacing: 1px;
+
+            margin-bottom: 10px;
+        }
+
+
+        /* =========================================
+           MEMBER INFORMATION
+        ========================================= */
+
+        .member-desc {
+            color: #333333;
+
+            font-size: 0.9rem;
+
+            line-height: 1.8;
+
+            font-weight: 400;
+        }
+
+        .member-desc p {
+            margin: 0;
+        }
+
+        .member-desc strong {
+            color: #ff0055;
+
+            font-weight: 800;
+        }
+
+
+        /* =========================================
+           MEMBER 7 CENTER
+        ========================================= */
+
+        .member-seven {
+            grid-column: 2;
+        }
+
+
+        /* =========================================
+           TABLET
+        ========================================= */
+
+        @media (max-width: 900px) {
+
+            .team-container {
+                padding: 30px;
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+
+                gap: 35px 25px;
+            }
+
+            .member-seven {
+                grid-column: auto;
+            }
+
+            .team-container::before,
+            .team-container::after {
+                display: none;
+            }
+        }
+
+
+        /* =========================================
+           MOBILE
+        ========================================= */
+
+        @media (max-width: 600px) {
+
+            body {
+                padding: 20px 10px;
+            }
+
+            .team-container {
+                padding: 20px;
+            }
+
+            .header {
+                margin-bottom: 40px;
+            }
+
+            .title {
+                font-size: 1.8rem;
+            }
+
+            .header-line {
+                display: none;
+            }
+
+
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+
+                gap: 45px;
+            }
+
+            .member-seven {
+                grid-column: auto;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         MAIN TEAM SECTION
+    ========================================== -->
+
+    <div class="team-container">
+
+
+        <!-- =====================================
+             HEADER
+        ====================================== -->
+
+        <div class="header">
+
+            <div class="title-container">
+
+                <h1 class="title">
+
+                    <span class="outline">
+                        GROUP
+                    </span>
+
+                    <span class="filled">
+                        6
+                    </span>
+
+                </h1>
+
+
+                <div class="header-line"></div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =====================================
+             TEAM MEMBERS
+        ====================================== -->
+
+        <div class="team-grid">
+
+
+            <!-- ==================================
+                 MEMBER 1
+            =================================== -->
+
+            <div class="team-card">
+
+                <div class="image-wrapper">
+
+                    <img
+                        src="george.JPEG"
+                        alt="John Russel Gonzales"
+                    >
+
+                </div>
+
+
+                <h3 class="member-name">
+                    GEORGE MICO LOPEZ
+                </h3>
+
+
+                <div class="member-desc">
+
+                    <p>
+                        <strong>AGE:</strong> 22
+                    </p>
+
+                    <p>
+                        <strong>YEAR:</strong> 3RD YEAR
+                    </p>
+
+                    <p>
+                        <strong>HOBBY:</strong> MAG ARAL NG MABUTI PARA MASAYA SI MOMMY
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 MEMBER 2
+            =================================== -->
+
+            <div class="team-card">
+
+                <div class="image-wrapper">
+
+                    <img
+                        src="carlo.JPEG"
+                        alt="John Carlo Laguna"
+                    >
+
+                </div>
+
+
+                <h3 class="member-name">
+                    JOHN CARLO LAGUNA
+                </h3>
+
+
+                <div class="member-desc">
+
+                    <p>
+                        <strong>AGE:</strong> 20
+                    </p>
+
+                    <p>
+                        <strong>YEAR:</strong> 3RD YEAR
+                    </p>
+
+                    <p>
+                        <strong>HOBBY:</strong> BASKETBALL
+                    </p>
+
+                </div>
+<div><div></div></div>
+            </div>
+
+
+
+            <!-- ==================================
+                 MEMBER 3
+            =================================== -->
+
+            <div class="team-card">
+
+                <div class="image-wrapper">
+
+                    <img
+                        src="yab.JPEG"
+                        alt="Rolando Cayabyab"
+                    >
+
+                </div>
+
+
+                <h3 class="member-name">
+                    ROLANDO CAYABYAB
+                </h3>
+
+
+                <div class="member-desc">
+
+                    <p>
+                        <strong>AGE:</strong> 23
+                    </p>
+
+                    <p>
+                        <strong>YEAR:</strong> 3RD YEAR
+                    </p>
+
+                    <p>
+                        <strong>HOBBY:</strong> WATCHING MOVIES
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 MEMBER 4
+            =================================== -->
+
+            <div class="team-card">
+
+                <div class="image-wrapper">
+
+                    <img
+                        src="eduard.JPEG"
+                        alt="Eduard Heroda"
+                    >
+
+                </div>
+
+
+                <h3 class="member-name">
+                    EDUARD HERODA
+                </h3>
+
+
+                <div class="member-desc">
+
+                    <p>
+                        <strong>AGE:</strong> 21
+                    </p>
+
+                    <p>
+                        <strong>YEAR:</strong> 3RD YEAR
+                    </p>
+
+                    <p>
+                        <strong>HOBBY:</strong> LISTENING TO MUSIC
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 MEMBER 5
+            =================================== -->
+
+            <div class="team-card">
+
+                <div class="image-wrapper">
+
+                    <img
+                        src="geordan.JPEG"
+                        alt="Geordan Reyes"
+                    >
+
+                </div>
+
+
+                <h3 class="member-name">
+                    GEORDAN REYES
+                </h3>
+
+
+                <div class="member-desc">
+
+                    <p>
+                        <strong>AGE:</strong> 22
+                    </p>
+
+                    <p>
+                        <strong>YEAR:</strong> 2ND YEAR
+                    </p>
+
+                    <p>
+                        <strong>HOBBY:</strong> PLAYING ONLINE GAMES
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 MEMBER 6
+            =================================== -->
+
+            <div class="team-card">
+
+                <div class="image-wrapper">
+
+                    <img
+                        src="rivera.jpeg"
+                        alt="Justine Rivera"
+                    >
+
+                </div>
+
+
+                <h3 class="member-name">
+                    JUSTINE RIVERA
+                </h3>
+
+
+                <div class="member-desc">
+
+                    <p>
+                        <strong>AGE:</strong> 20
+                    </p>
+
+                    <p>
+                        <strong>YEAR:</strong> 3RD YEAR
+                    </p>
+
+                    <p>
+                        <strong>HOBBY:</strong> STYLING MY MOTORCYCLE
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ==================================
+                 MEMBER 7
+            =================================== -->
+
+            <div class="team-card member-seven">
+
+                <div class="image-wrapper">
+
+                    <div style="
+                        width: 100%;
+                        height: 100%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        background: #f1f1f1;
+                        color: #999999;
+                        font-size: 1.2rem;
+                        font-weight: 800;
+                    ">
+                         <img
+                        src="russ.JPEG"
+                        alt="Justine Rivera"
+                    >
+                    </div>
+
+                </div>
+
+
+                <h3 class="member-name">
+                    JOHN RUSSEL GONZALES
+                </h3>
+
+
+                <div class="member-desc">
+
+                    <p>
+                        <strong>AGE:</strong> 20
+                    </p>
+
+                    <p>
+                        <strong>YEAR:</strong> 3RD YEAR
+                    </p>
+
+                    <p>
+                        <strong>HOBBY:</strong> PLAYING DRUMS
+                    </p>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+</body>
+
+</html
